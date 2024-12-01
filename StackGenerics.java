@@ -5,5 +5,7 @@ public class StackGenerics{
         s.push(4);
         System.out.println(s.pop());
         System.out.println(s.pop());
+
+        
     }
 }
