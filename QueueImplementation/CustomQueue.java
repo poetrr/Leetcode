@@ -12,7 +12,7 @@ public class CustomQueue {
     }
     protected  boolean addLast(int item){
         if(isFull()){
-            System.out.println("Stack is full cannot ");
+            System.out.println("Stack is full cannot insert  ");
             return false; 
         }
         end++;
