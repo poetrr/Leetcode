@@ -47,6 +47,44 @@ public class SinglyLL {
         temp.next=n;
         size++;
     }
+    public void deleteFirst(){
+        head=head.next;
+        if(head==null){
+            tail=null;
+        }
+        size--;
+    }
+    public void deleteLast(int lastNodesDelete){
+        if(size<=1){
+            deleteFirst();
+            return;
+        }
+        Node prev=getPrevious(size-lastNodesDelete);
+        tail=prev;
+        prev.next=null;
+       
+    }
+    public void deletePosition(int position){
+        if(position==0){
+            deleteFirst();
+            return;
+        }
+        if(position==size-1){
+            deleteLast(position);
+            return;
+        }
+        Node prev=getPrevious(position-1);
+        prev.next=prev.next.next;
+
+       
+    }
+    public Node getPrevious(int number){
+        Node temp=head;
+        for(int i=0;i<number;i++){
+            temp=temp.next;
+        }
+        return temp;
+    }
     public void display(){
         Node temp=head;
 
@@ -64,6 +102,15 @@ public class SinglyLL {
         list.insertPlace(5,0);
         list.insertFirst(2);
         list.insertLast(4);
+        list.insertFirst(3);
+        list.insertLast(7);
+        list.display();
+
+        list.deleteFirst();
+        list.display();
+        list.deleteLast(2);
+        list.display();
+        list.deletePosition(0);
         list.display();
     }
 
