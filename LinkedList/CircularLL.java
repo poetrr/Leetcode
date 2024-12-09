@@ -5,15 +5,13 @@ public class CircularLL {
     private Node head;
     private Node tail;
     private int size;
-    public CircularLL(){
-        this.size=0;
-        this.head=null;
-        this.tail=null;
+
+    public CircularLL() {
+        this.size = 0;
+        this.head = null;
+        this.tail = null;
     }
-    public CircularLL(int size){
-        this.size=size;
-    }
-    
+
     public void insertAtPosition(int value, int position) {
         if (position < 0 || position > size) {
             System.out.println("Invalid position. Valid range is 0 to " + size);
@@ -46,6 +44,7 @@ public class CircularLL {
         }
         size++;
     }
+
     public void delete(int value) {
         if (head == null) {
             System.out.println("No nodes present in the Circular Linked List");
@@ -73,16 +72,42 @@ public class CircularLL {
             temp = temp.next;
         } while (temp != head);
     }
+
+    public void display() {
+        if (head == null) {
+            System.out.println("Circular Linked List is empty");
+            return;
+        }
+        Node temp = head;
+        do {
+            System.out.print(temp.value + " -> ");
+            temp = temp.next;
+        } while (temp != head);
+        System.out.println(temp.value+ "(reached head again)");
+    }
+
     private class Node {
         private int value;
         private Node next;
-        public Node(int data){
-            this.value=0;
-            this.next=null;
+
+        public Node(int data) {
+            this.value = data; // Fix: Initialize with the passed data
+            this.next = null;
         }
-        public Node(int data,Node next){
-            this.value=data;
-            this.next=next;
+
+        public Node(int data, Node next) {
+            this.value = data;
+            this.next = next;
         }
+    }
+
+    public static void main(String[] args) {
+        CircularLL list = new CircularLL();
+        list.insertAtPosition(1, 0);
+        list.insertAtPosition(2, 1);
+        list.insertAtPosition(3, 2);
+        list.insertAtPosition(4, 3);
+        list.insertAtPosition(5, 4);
+        list.display(); // Output: 1 -> 2 -> 3 -> 4 -> 5 -> END
     }
 }
